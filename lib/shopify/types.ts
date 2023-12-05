@@ -61,9 +61,27 @@ export type Page = {
   updatedAt: string;
 };
 
-export type Product = Omit<ShopifyProduct, 'variants' | 'images'> & {
+export type Product = Omit<
+  ShopifyProduct,
+  'variants' | 'images' | 'publisher' | 'published' | 'binding' | 'isbn' | 'author'
+> & {
   variants: ProductVariant[];
   images: Image[];
+  publisher?: {
+    value: string;
+  };
+  published?: {
+    value: string;
+  };
+  binding?: {
+    value: string;
+  };
+  isbn?: {
+    value: string;
+  };
+  author?: {
+    value: string;
+  };
 };
 
 export type ProductOption = {

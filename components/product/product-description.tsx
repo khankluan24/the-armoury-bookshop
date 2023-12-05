@@ -16,6 +16,7 @@ export function ProductDescription({ product }: { product: Product }) {
           />
         </div>
       </div>
+
       <VariantSelector options={product.options} variants={product.variants} />
 
       {product.descriptionHtml ? (
@@ -24,6 +25,18 @@ export function ProductDescription({ product }: { product: Product }) {
           html={product.descriptionHtml}
         />
       ) : null}
+
+      <div className="mb-6 text-sm leading-tight dark:text-white/[60%]">
+        {product.publisher && product.publisher.value ? (
+          <p>Publisher: {product.publisher.value}</p>
+        ) : null}
+        {product.published && product.published.value ? (
+          <p>Published: {product.published.value}</p>
+        ) : null}
+        {product.binding && product.binding.value ? <p>Binding: {product.binding.value}</p> : null}
+        {product.isbn && product.isbn.value ? <p>ISBN: {product.isbn.value}</p> : null}
+        {product.author && product.author.value ? <p>Author: {product.author.value}</p> : null}
+      </div>
 
       <AddToCart variants={product.variants} availableForSale={product.availableForSale} />
     </>
