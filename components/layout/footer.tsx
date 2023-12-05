@@ -1,8 +1,10 @@
 import Link from 'next/link';
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import FooterMenu from 'components/layout/footer-menu';
 import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
+import { ArrowUpRight } from 'lucide-react';
 import { Suspense } from 'react';
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
@@ -45,9 +47,31 @@ export default async function Footer() {
             {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} All rights reserved.
           </p>
           <p className="md:ml-auto">
-            <a href="https://61oaksgroup.com.au" className="text-black dark:text-white">
-              Part of the 61 Oaks Group
-            </a>
+            Part of{' '}
+            <HoverCard>
+              <HoverCardTrigger className="cursor-pointer font-medium underline-offset-4 hover:underline">
+                61 Oaks Group
+              </HoverCardTrigger>
+              <HoverCardContent className="text-left">
+                <div className="space-y-1">
+                  <p className="text-sm">
+                    A collection of initiatives, projects and business that are aimed at reforming
+                    their sectors to build up ruins, raise up former devastations, repair ruined
+                    cities and provide discipleship for the future generation of leaders.
+                  </p>
+                  <div className="flex items-center pt-2">
+                    <a
+                      href="https://61oaksgroup.com.au/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex text-xs text-muted-foreground hover:text-accent-foreground"
+                    >
+                      Website <ArrowUpRight className="h-3 w-3" />
+                    </a>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </p>
         </div>
       </div>

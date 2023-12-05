@@ -1,5 +1,9 @@
 import Navbar from 'components/layout/navbar';
-import { GeistSans } from 'geist/font';
+import Notice from 'components/notice';
+import Oaks from 'components/oaks';
+import { ThemeProvider } from 'components/theme-provider';
+import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
 import { ensureStartsWith } from 'lib/utils';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
@@ -33,12 +37,23 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
-      <body className="bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
-        <Navbar />
-        <Suspense>
-          <main>{children}</main>
-        </Suspense>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} min-h-screen bg-white font-sans text-black antialiased selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Oaks />
+          <Notice />
+          <Navbar />
+          <Suspense>
+            <main>{children}</main>
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );
