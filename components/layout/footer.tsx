@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import FooterMenu from 'components/layout/footer-menu';
-import LogoSquare from 'components/logo-square';
 import { getMenu } from 'lib/shopify';
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { Suspense } from 'react';
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
@@ -17,12 +17,31 @@ export default async function Footer() {
   const copyrightName = COMPANY_NAME || SITE_NAME || '';
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm dark:border-neutral-700 md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
+    <footer className="bg-neutral-900 text-sm text-muted-foreground">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-muted px-6 py-12 text-sm  md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
         <div>
-          <Link className="flex items-center gap-2 text-black dark:text-white md:pt-1" href="/">
-            <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
+          <Link
+            className="flex items-center gap-2 text-white hover:text-muted-foreground md:pt-1"
+            href="/"
+          >
+            <div className="my-auto">
+              <Link className="flex font-bold" href={'/'}>
+                <Image
+                  src="/logos/the-armoury-bookshop.png"
+                  height="40"
+                  width="40"
+                  alt="The Armoury Bookshop Logo"
+                  className="mr-4"
+                />
+                <div className="my-auto transition-all duration-200 hover:text-muted-foreground">
+                  <p className="relative my-auto whitespace-nowrap font-logo text-xl leading-none">
+                    <span className="absolute -top-2.5 left-4 text-sm">The</span>
+                    Armoury
+                  </p>
+                  <p className="ml-2 whitespace-nowrap font-logo text-xl leading-none">Bookshop</p>
+                </div>
+              </Link>
+            </div>
           </Link>
         </div>
         <Suspense
@@ -40,7 +59,7 @@ export default async function Footer() {
           <FooterMenu menu={menu} />
         </Suspense>
       </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
+      <div className="border-t border-muted py-6 text-sm">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
           <p>
             &copy; {copyrightDate} {copyrightName}
@@ -49,7 +68,7 @@ export default async function Footer() {
           <p className="md:ml-auto">
             Part of{' '}
             <HoverCard>
-              <HoverCardTrigger className="cursor-pointer font-medium underline-offset-4 hover:underline">
+              <HoverCardTrigger className="cursor-pointer font-medium underline-offset-4 hover:text-white hover:underline">
                 61 Oaks Group
               </HoverCardTrigger>
               <HoverCardContent className="text-left">

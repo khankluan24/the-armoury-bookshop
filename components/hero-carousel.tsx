@@ -26,7 +26,7 @@ export default function HeroCarousel() {
             quality={100}
             priority
             alt="Background Image"
-            className="h-[55vh] w-full border-b-2 object-cover object-top brightness-75"
+            className="h-[55vh] w-full object-cover object-top brightness-75"
           />
           <div className="mx-auto max-w-7xl">
             <h1></h1>
@@ -42,7 +42,7 @@ export default function HeroCarousel() {
             quality={100}
             priority
             alt="Background Image"
-            className="h-[55vh] w-full border-b-2 object-cover object-top brightness-75"
+            className="h-[55vh] w-full object-cover object-top brightness-75"
           />
           <div className="mx-auto max-w-7xl">
             <h1></h1>
@@ -58,7 +58,7 @@ export default function HeroCarousel() {
             quality={100}
             priority
             alt="Background Image"
-            className="h-[55vh] w-full border-b-2 object-cover object-top brightness-75"
+            className="h-[55vh] w-full object-cover object-top brightness-75"
           />
           <div className="mx-auto max-w-7xl">
             <h1></h1>

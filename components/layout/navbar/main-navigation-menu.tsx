@@ -30,7 +30,7 @@ export default function MainNavigationMenu({
           <NavigationMenuItem>
             <NavigationMenuTrigger>Books</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <div className="h-[40vh] w-screen p-4">
+              <div className="h-[40vh] w-screen bg-neutral-900 p-4 text-white">
                 <div className="grid w-full grid-cols-3 gap-12 p-10">
                   <div className="space-y-4">
                     <h2 className="font-logo text-xl font-semibold tracking-tighter">Culture</h2>
@@ -76,6 +76,20 @@ export default function MainNavigationMenu({
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/events" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Events
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/gifts" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Gifts
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
@@ -103,7 +117,7 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
           <a
             ref={ref}
             className={cn(
-              'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+              'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground ',
               className
             )}
             {...props}

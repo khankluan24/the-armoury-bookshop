@@ -15,8 +15,8 @@ export default async function Navbar() {
   const kidsMenu = await getMenu('kids');
 
   return (
-    <nav className="sticky top-0 z-50 flex w-full items-center justify-between bg-muted/50 p-4 backdrop-blur-3xl lg:px-6">
-      <div className="block flex-none md:hidden">
+    <nav className="sticky top-0 z-50 flex w-full items-center justify-between border-b-2 bg-neutral-900 p-4 text-white  lg:px-6">
+      <div className="mr-4 block flex-none md:hidden">
         <MobileMenu menu={cultureMenu} />
       </div>
       <div className="flex w-full items-center">
@@ -30,7 +30,7 @@ export default async function Navbar() {
                 alt="The Armoury Bookshop Logo"
                 className="mr-4"
               />
-              <div className="my-auto">
+              <div className="my-auto hidden transition-all duration-200 hover:text-muted-foreground md:block">
                 <p className="relative my-auto whitespace-nowrap font-logo text-xl leading-none">
                   <span className="absolute -top-2.5 left-4 text-sm">The</span>
                   Armoury
@@ -51,7 +51,9 @@ export default async function Navbar() {
           <div className="hidden lg:flex">
             <Search />
           </div>
+
           <ModeToggle />
+
           <Suspense fallback={<OpenCart />}>
             <Cart />
           </Suspense>

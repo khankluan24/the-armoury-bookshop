@@ -1,5 +1,4 @@
 import Navbar from 'components/layout/navbar';
-import Notice from 'components/notice';
 import Oaks from 'components/oaks';
 import { ThemeProvider } from 'components/theme-provider';
 import { GeistMono } from 'geist/font/mono';
@@ -46,16 +45,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${fontLogo.variable} min-h-screen bg-white font-sans text-black antialiased selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${fontLogo.variable} min-h-screen bg-white font-sans text-black antialiased transition-all duration-200 selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Oaks />
-          <Notice />
+          {/* <Notice /> */}
           <Navbar />
           <Suspense>
             <main>{children}</main>
