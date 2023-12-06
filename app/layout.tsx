@@ -5,8 +5,15 @@ import { ThemeProvider } from 'components/theme-provider';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { ensureStartsWith } from 'lib/utils';
+import { Donegal_One } from 'next/font/google';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
+
+const fontLogo = Donegal_One({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-logo'
+});
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -39,7 +46,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} min-h-screen bg-white font-sans text-black antialiased selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${fontLogo.variable} min-h-screen bg-white font-sans text-black antialiased selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
       >
         <ThemeProvider
           attribute="class"

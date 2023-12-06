@@ -93,7 +93,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)']
+        mono: ['var(--font-geist-mono)'],
+        logo: ['var(--font-logo)']
       }
     }
   },

@@ -9,6 +9,7 @@ import { createUrl } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useEffect, useRef, useState } from 'react';
+import { Button } from '../ui/button';
 import CloseCart from './close-cart';
 import { DeleteItemButton } from './delete-item-button';
 import { EditItemQuantityButton } from './edit-item-quantity-button';
@@ -39,9 +40,15 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
 
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
+      <Button
+        aria-label="Open cart"
+        onClick={openCart}
+        size="sm"
+        variant="ghost"
+        className="relative my-auto h-14 w-14 p-0 lg:h-10 lg:w-10"
+      >
         <OpenCart quantity={cart?.totalQuantity} />
-      </button>
+      </Button>
       <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
           <Transition.Child
