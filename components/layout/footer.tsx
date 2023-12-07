@@ -6,6 +6,7 @@ import { getMenu } from 'lib/shopify';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import { Suspense } from 'react';
+import { FaFacebook, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
 
@@ -18,13 +19,10 @@ export default async function Footer() {
 
   return (
     <footer className="bg-neutral-900 text-sm text-muted-foreground">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-muted px-6 py-12 text-sm  md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
-        <div>
-          <Link
-            className="flex items-center gap-2 text-white hover:text-muted-foreground md:pt-1"
-            href="/"
-          >
-            <div className="my-auto">
+      <div className="mx-auto flex w-full max-w-7xl flex-col justify-between gap-6 border-t border-muted px-6 py-12  text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
+        <div className="gap-12 space-y-8 md:flex md:space-y-0">
+          <Link className="gap-2 text-white hover:text-muted-foreground md:pt-1" href="/">
+            <div>
               <Link className="flex font-bold" href={'/'}>
                 <Image
                   src="/logos/the-armoury-bookshop.png"
@@ -43,21 +41,59 @@ export default async function Footer() {
               </Link>
             </div>
           </Link>
+          <Suspense
+            fallback={
+              <div className="flex h-[188px] w-[200px] flex-col gap-2">
+                <div className={skeleton} />
+                <div className={skeleton} />
+                <div className={skeleton} />
+                <div className={skeleton} />
+                <div className={skeleton} />
+                <div className={skeleton} />
+              </div>
+            }
+          >
+            <FooterMenu menu={menu} />
+          </Suspense>
         </div>
-        <Suspense
-          fallback={
-            <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
+        <div>
+          <div className="flex flex-col gap-2">
+            <div className="flex justify-center gap-4">
+              <a
+                href="https://x.com/thearmourybookshop"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-white"
+              >
+                <FaXTwitter className="my-auto h-6 w-6" />
+              </a>
+              <a
+                href="https://www.facebook.com/thearmourybookshop"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-white"
+              >
+                <FaFacebook className="my-auto h-6 w-6" />
+              </a>
+              <a
+                href="https://www.instagram.com/thearmourybookshop/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-white"
+              >
+                <FaInstagram className="my-auto h-6 w-6" />
+              </a>
+              <a
+                href="https://www.youtube.com/@TheArmouryBookshop"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-white"
+              >
+                <FaYoutube className="my-auto h-6 w-6" />
+              </a>
             </div>
-          }
-        >
-          <FooterMenu menu={menu} />
-        </Suspense>
+          </div>
+        </div>
       </div>
       <div className="border-t border-muted py-6 text-sm">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
