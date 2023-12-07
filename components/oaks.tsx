@@ -25,11 +25,11 @@ export default function Oaks() {
             Star Compass
           </a>
           <a
-            href="https://lbnuconsulting.com.au"
+            href="https://labuconsulting.com.au"
             target="_blank"
             className="underline-offset-4 hover:text-white hover:underline"
           >
-            LBNU Consulting
+            LABU Consulting
           </a>
         </div>
       </div>

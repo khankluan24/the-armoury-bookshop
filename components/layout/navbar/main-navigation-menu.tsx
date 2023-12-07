@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { BookOpenText, CalendarDays, GiftIcon, LibraryBig } from 'lucide-react';
+import { BookOpenText, CalendarDays, Coffee, GiftIcon, LibraryBig } from 'lucide-react';
 import Link from 'next/link';
 
 export default function MainNavigationMenu({
@@ -35,7 +35,7 @@ export default function MainNavigationMenu({
               </NavigationMenuTrigger>
             </Link>
             <NavigationMenuContent>
-              <div className="h-[40vh] w-screen bg-neutral-900 p-4 text-white">
+              <div className="h-50% w-screen bg-neutral-900 p-4 text-white">
                 <div className="grid w-full grid-cols-3 gap-12 p-10">
                   <div className="space-y-4">
                     <h2 className="font-logo text-xl font-semibold tracking-tighter">Culture</h2>
@@ -75,9 +75,16 @@ export default function MainNavigationMenu({
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/our-story" legacyBehavior passHref>
+            <Link href="/our-heritage" legacyBehavior passHref>
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} flex gap-2`}>
-                <BookOpenText className="my-auto h-4 w-4" /> Our Story
+                <BookOpenText className="my-auto h-4 w-4" /> Our Heritage
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/cafe" legacyBehavior passHref>
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} flex gap-2`}>
+                <Coffee className="my-auto h-4 w-4" /> Cafe
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
