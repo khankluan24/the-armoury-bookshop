@@ -1,6 +1,5 @@
 import Cards from '@/components/cards';
 import InfoSection from '@/components/info-section';
-import { ThreeItemGrid } from 'components/grid/three-items';
 import HeroCarousel from 'components/hero-carousel';
 import Footer from 'components/layout/footer';
 import { Suspense } from 'react';
@@ -21,7 +20,7 @@ export default async function HomePage() {
       <div className="w-full bg-[#bf1a2a] p-3 drop-shadow-4xl" />
 
       <Cards />
-      <ThreeItemGrid />
+      {/* <ThreeItemGrid /> */}
       {/* <VideoSection /> */}
       <InfoSection />
       <Suspense>

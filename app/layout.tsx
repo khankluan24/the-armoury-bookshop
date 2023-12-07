@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${fontLogo.variable} min-h-screen bg-white font-sans text-black antialiased transition-all duration-200 selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${fontLogo.variable} min-h-screen bg-[#fffbf6] font-sans text-black antialiased transition-all duration-200 selection:bg-black selection:text-white dark:bg-neutral-900 dark:text-white dark:selection:bg-white dark:selection:text-black`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Oaks />

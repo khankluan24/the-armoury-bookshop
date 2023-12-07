@@ -3,13 +3,14 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
 import Grid from '@/components/grid';
-import { GridTileImage } from 'components/grid/tile';
+import Price from '@/components/price';
 import Footer from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { ProductDescription } from 'components/product/product-description';
 import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
 import { getProduct, getProductRecommendations } from 'lib/shopify';
-import { Image } from 'lib/shopify/types';
+import { Image as ShopifyImage } from 'lib/shopify/types';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const runtime = 'edge';
@@ -86,7 +87,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         <div className="flex flex-col space-y-8 rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8 lg:space-y-0">
           <div className="h-full w-full basis-full lg:basis-3/6">
             <Gallery
-              images={product.images.map((image: Image) => ({
+              images={product.images.map((image: ShopifyImage) => ({
                 src: image.url,
                 altText: image.altText
               }))}
@@ -120,22 +121,32 @@ async function RelatedProducts({ id }: { id: string }) {
         {relatedProducts.map((product) => (
           <Grid.Item key={product.handle}>
             <Link
-              className="relative inline-block h-full w-full"
+              className="group relative flex h-full w-full rounded-lg bg-[#dfcfbf] dark:bg-neutral-800"
               href={`/product/${product.handle}`}
             >
-              <GridTileImage
+              <Image
                 alt={product.title}
-                label={{
-                  title: product.title,
-                  author: (product.author && product.author.value) || '',
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode
-                }}
                 src={product.featuredImage?.url}
                 fill
-                sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="group:hover:drop-shadow-3xl h-full w-full object-contain py-4 drop-shadow-2xl transition-all duration-200"
               />
             </Link>
+            <div className="h-max w-full space-y-1 bg-[#fffbf6] p-4 font-semibold text-black dark:border-neutral-800 dark:bg-black/70 dark:text-white">
+              <div>
+                <h3 className="mr-4 line-clamp-2 flex-grow font-logo leading-none tracking-tight">
+                  {product.title}
+                </h3>
+                <p className="text-xs font-normal">
+                  {(product.author && product.author.value) || ''}
+                </p>
+              </div>
+              <Price
+                className="flex-none text-sm"
+                amount={product.priceRange.maxVariantPrice.amount}
+                currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+                currencyCodeClassName="inline"
+              />
+            </div>
           </Grid.Item>
         ))}
       </Grid>

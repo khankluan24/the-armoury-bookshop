@@ -34,6 +34,10 @@ export const getProductsQuery = /* GraphQL */ `
     products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 100) {
       edges {
         node {
+          author: metafield(namespace: "custom", key: "Author") {
+            value
+            type
+          }
           ...product
         }
       }

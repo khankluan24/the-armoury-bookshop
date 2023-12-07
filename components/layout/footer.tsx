@@ -19,7 +19,7 @@ export default async function Footer() {
 
   return (
     <footer className="bg-neutral-900 text-sm text-muted-foreground">
-      <div className="mx-auto flex w-full max-w-7xl flex-col justify-between gap-6 border-t border-muted px-6 py-12  text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
+      <div className="mx-auto flex w-full max-w-7xl flex-col justify-between gap-6 border-t-2 px-6 py-12  text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
         <div className="gap-12 space-y-8 md:flex md:space-y-0">
           <Link className="gap-2 text-white hover:text-muted-foreground md:pt-1" href="/">
             <div>
@@ -95,7 +95,7 @@ export default async function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-muted py-6 text-sm">
+      <div className="border-t-2 py-6 text-sm">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
           <p>
             &copy; {copyrightDate} {copyrightName}

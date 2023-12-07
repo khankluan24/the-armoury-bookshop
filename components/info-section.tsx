@@ -4,7 +4,7 @@ import { buttonVariants } from './ui/button';
 
 export default function InfoSection() {
   return (
-    <section className="flex  w-full items-center justify-center px-4 py-12">
+    <section className="flex  w-full items-center justify-center bg-white px-4 py-12 dark:bg-neutral-800">
       <div className="mx-auto max-w-7xl space-y-6 text-center">
         <p className="font-mono text-sm uppercase">Renewing minds</p>
         <h1 className="font-logo text-4xl font-bold">Haddon Institute</h1>
