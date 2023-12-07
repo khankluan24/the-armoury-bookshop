@@ -25,10 +25,22 @@ export default async function SearchPage({
     <>
       {searchValue ? (
         <p className="mb-4">
-          {products.length === 0
-            ? 'There are no products that match '
-            : `Showing ${products.length} ${resultsText} for `}
-          <span className="font-bold">&quot;{searchValue}&quot;</span>
+          {products.length === 0 ? (
+            <div className="flex items-center justify-center">
+              <div className="text-center">
+                <h1 className="text-lg font-semibold">No Products Found</h1>
+                <p>
+                  There are no products that match the query{' '}
+                  <span className="font-bold">&quot;{searchValue}&quot;</span>
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              Showing {products.length} {resultsText} for{' '}
+              <span className="font-bold">&quot;{searchValue}&quot;</span>
+            </div>
+          )}
         </p>
       ) : null}
       {products.length > 0 ? (

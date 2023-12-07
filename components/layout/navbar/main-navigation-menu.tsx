@@ -29,9 +29,11 @@ export default function MainNavigationMenu({
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="flex gap-2">
-              <LibraryBig className="my-auto h-4 w-4" /> Books
-            </NavigationMenuTrigger>
+            <Link href="/search">
+              <NavigationMenuTrigger className="flex gap-2">
+                <LibraryBig className="my-auto h-4 w-4" /> Books
+              </NavigationMenuTrigger>
+            </Link>
             <NavigationMenuContent>
               <div className="h-[40vh] w-screen bg-neutral-900 p-4 text-white">
                 <div className="grid w-full grid-cols-3 gap-12 p-10">

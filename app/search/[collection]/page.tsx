@@ -38,7 +38,12 @@ export default async function CategoryPage({
   return (
     <section>
       {products.length === 0 ? (
-        <p>{`No products found in this collection`}</p>
+        <div className="flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-lg font-semibold">No Products Found</h1>
+            <p>No products were found in this collection.</p>
+          </div>
+        </div>
       ) : (
         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           <ProductGridItems products={products} />
