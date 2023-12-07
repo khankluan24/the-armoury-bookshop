@@ -26,7 +26,7 @@ export default function Search() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="relative w-80">
+    <form onSubmit={onSubmit} className="relative w-60">
       <Input
         key={searchParams?.get('q')}
         type="text"
@@ -34,7 +34,7 @@ export default function Search() {
         placeholder="Search for products..."
         autoComplete="off"
         defaultValue={searchParams?.get('q') || ''}
-        className="my-auto h-10 w-80 bg-muted"
+        className="my-auto h-10 w-60 bg-muted"
       />
       <button type="submit" className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <MagnifyingGlassIcon className="h-4 " />

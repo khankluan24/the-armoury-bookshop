@@ -12,6 +12,7 @@ import {
   navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
+import { BookOpenText, CalendarDays, GiftIcon, LibraryBig } from 'lucide-react';
 import Link from 'next/link';
 
 export default function MainNavigationMenu({
@@ -28,7 +29,9 @@ export default function MainNavigationMenu({
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Books</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="flex gap-2">
+              <LibraryBig className="my-auto h-4 w-4" /> Books
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="h-[40vh] w-screen bg-neutral-900 p-4 text-white">
                 <div className="grid w-full grid-cols-3 gap-12 p-10">
@@ -71,22 +74,22 @@ export default function MainNavigationMenu({
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/our-story" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Our Story
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} flex gap-2`}>
+                <BookOpenText className="my-auto h-4 w-4" /> Our Story
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/events" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Events
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} flex gap-2`}>
+                <CalendarDays className="my-auto h-4 w-4" /> Events
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/gifts" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Gifts
+              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} flex gap-2`}>
+                <GiftIcon className="my-auto h-4 w-4" /> Gifts
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
