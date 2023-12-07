@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
+import Grid from '@/components/grid';
 import { GridTileImage } from 'components/grid/tile';
 import Footer from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
@@ -115,28 +116,29 @@ async function RelatedProducts({ id }: { id: string }) {
   return (
     <div className="py-8">
       <h2 className="mb-4 font-logo text-2xl font-bold">You might also like...</h2>
-      <ul className="flex w-full gap-4 overflow-x-auto pt-1">
+      <Grid className="grid-cols-1 sm:grid-cols-3 lg:grid-cols-4">
         {relatedProducts.map((product) => (
-          <li
-            key={product.handle}
-            className="aspect-square w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
-          >
-            <Link className="relative h-full w-full" href={`/product/${product.handle}`}>
+          <Grid.Item key={product.handle}>
+            <Link
+              className="relative inline-block h-full w-full"
+              href={`/product/${product.handle}`}
+            >
               <GridTileImage
                 alt={product.title}
                 label={{
                   title: product.title,
+                  author: (product.author && product.author.value) || '',
                   amount: product.priceRange.maxVariantPrice.amount,
                   currencyCode: product.priceRange.maxVariantPrice.currencyCode
                 }}
                 src={product.featuredImage?.url}
                 fill
-                sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
+                sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
               />
             </Link>
-          </li>
+          </Grid.Item>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 }

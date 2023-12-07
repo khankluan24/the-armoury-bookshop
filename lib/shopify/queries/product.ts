@@ -45,6 +45,10 @@ export const getProductsQuery = /* GraphQL */ `
 export const getProductRecommendationsQuery = /* GraphQL */ `
   query getProductRecommendations($productId: ID!) {
     productRecommendations(productId: $productId) {
+      author: metafield(namespace: "custom", key: "Author") {
+        value
+        type
+      }
       ...product
     }
   }

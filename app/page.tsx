@@ -1,5 +1,4 @@
 import Cards from '@/components/cards';
-import { Carousel } from 'components/carousel';
 import { ThreeItemGrid } from 'components/grid/three-items';
 import HeroCarousel from 'components/hero-carousel';
 import Footer from 'components/layout/footer';
@@ -23,7 +22,7 @@ export default async function HomePage() {
       <Cards />
       <ThreeItemGrid />
       <Suspense>
-        <Carousel />
+        {/* <Carousel /> */}
         <Suspense>
           <Footer />
         </Suspense>

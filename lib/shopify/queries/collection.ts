@@ -47,6 +47,10 @@ export const getCollectionProductsQuery = /* GraphQL */ `
         edges {
           node {
             ...product
+            author: metafield(namespace: "custom", key: "Author") {
+              value
+              type
+            }
           }
         }
       }
