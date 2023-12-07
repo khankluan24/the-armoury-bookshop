@@ -38,6 +38,26 @@ const cartFragment = /* GraphQL */ `
                 value
               }
               product {
+                publisher: metafield(namespace: "custom", key: "Publisher") {
+                  value
+                  type
+                }
+                published: metafield(namespace: "custom", key: "Published") {
+                  value
+                  type
+                }
+                binding: metafield(namespace: "custom", key: "Binding") {
+                  value
+                  type
+                }
+                isbn: metafield(namespace: "facts", key: "ISBN") {
+                  value
+                  type
+                }
+                author: metafield(namespace: "custom", key: "Author") {
+                  value
+                  type
+                }
                 ...product
               }
             }

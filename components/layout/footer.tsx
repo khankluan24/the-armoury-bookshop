@@ -33,7 +33,7 @@ export default async function Footer() {
                   alt="The Armoury Bookshop Logo"
                   className="mr-4"
                 />
-                <div className="my-auto transition-all duration-200 hover:text-muted-foreground">
+                <div className="my-auto hover:text-muted-foreground">
                   <p className="relative my-auto whitespace-nowrap font-logo text-xl leading-none">
                     <span className="absolute -top-2.5 left-4 text-sm">The</span>
                     Armoury

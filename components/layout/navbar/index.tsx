@@ -31,7 +31,7 @@ export default async function Navbar() {
                   alt="The Armoury Bookshop Logo"
                   className="mr-4"
                 />
-                <div className="my-auto hidden transition-all duration-200 hover:text-muted-foreground md:block">
+                <div className="my-auto hidden hover:text-muted-foreground md:block">
                   <p className="relative my-auto whitespace-nowrap font-logo text-xl leading-none">
                     <span className="absolute -top-2.5 left-4 text-sm">The</span>
                     Armoury
