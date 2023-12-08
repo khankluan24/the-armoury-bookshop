@@ -1,41 +1,76 @@
 import { getCollectionProducts } from 'lib/shopify';
+import Image from 'next/image';
 import Link from 'next/link';
-import { GridTileImage } from './grid/tile';
+import Price from './price';
 
-export async function Carousel() {
+export async function Carousel({
+  collection,
+  tagline,
+  title
+}: {
+  collection: string;
+  tagline: string;
+  title: string;
+}) {
   // Collections that start with `hidden-*` are hidden from the search page.
-  const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
+  const products = await getCollectionProducts({ collection: collection });
 
   if (!products?.length) return null;
 
-  // Purposefully duplicating products to make the carousel loop and not run out of products on wide screens.
-  const carouselProducts = [...products, ...products, ...products];
-
   return (
-    <div className=" w-full overflow-x-auto pb-6 pt-1">
-      <ul className="flex animate-carousel gap-4">
-        {carouselProducts.map((product, i) => (
-          <li
-            key={`${product.handle}${i}`}
-            className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
-          >
-            <Link href={`/product/${product.handle}`} className="relative h-full w-full">
-              <GridTileImage
-                alt={product.title}
-                label={{
-                  title: product.title,
-                  author: (product.author && product.author.value) || '',
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode
-                }}
-                src={product.featuredImage?.url}
-                fill
-                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
-              />
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="flex justify-end px-4">
+      <div className="scrollbar-hide overflow-x-auto py-32">
+        <div className="flex gap-2">
+          <div className="relative min-h-full min-w-[280px] rounded-lg bg-black">
+            <div className="absolute bottom-6 left-6 right-6 space-y-4  text-white">
+              <p className="font-mono text-sm uppercase">{tagline}</p>
+
+              <p className="font-logo text-2xl font-semibold">{title}</p>
+            </div>
+          </div>
+          {products.map((product) => (
+            <div key={product.handle}>
+              <Link
+                className="relative flex aspect-square rounded-lg bg-[#dfcfbf] transition-all duration-200 ease-in-out dark:bg-neutral-800"
+                href={`/product/${product.handle}`}
+              >
+                <Image
+                  alt={product.title}
+                  src={product.featuredImage?.url}
+                  fill
+                  className=" object-contain py-4 drop-shadow-2xl"
+                />
+              </Link>
+              <div className="w-[280px] bg-[#fffbf6] p-4 font-semibold text-black  dark:bg-black/70 dark:text-white">
+                <div>
+                  <Link
+                    href={`/product/${product.handle}`}
+                    className="mr-4 line-clamp-2 flex-grow font-logo tracking-tight underline-offset-4 hover:text-blue-600 hover:underline"
+                  >
+                    {product.title}
+                  </Link>
+                  <Link
+                    href={`/search?q=${
+                      ((product.author && product.author.value) || '')
+                        .toLowerCase()
+                        .replace(/\s+/g, '-') || ''
+                    }`}
+                    className="text-xs font-normal underline-offset-4 hover:text-blue-600 hover:underline"
+                  >
+                    {(product.author && product.author.value) || ''}
+                  </Link>
+                </div>
+                <Price
+                  className="flex-none text-sm"
+                  amount={product.priceRange.maxVariantPrice.amount}
+                  currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+                  currencyCodeClassName="inline"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

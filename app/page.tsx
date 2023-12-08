@@ -1,4 +1,5 @@
 import Cards from '@/components/cards';
+import { Carousel } from '@/components/carousel';
 import InfoSection from '@/components/info-section';
 import HeroCarousel from 'components/hero-carousel';
 import Footer from 'components/layout/footer';
@@ -22,9 +23,14 @@ export default async function HomePage() {
       <Cards />
       {/* <ThreeItemGrid /> */}
       {/* <VideoSection /> */}
-      <InfoSection />
       <Suspense>
-        {/* <Carousel /> */}
+        <Carousel
+          collection="hidden-homepage-carousel"
+          tagline="New Collection"
+          title="Hudson Taylor Collection"
+        />
+
+        <InfoSection />
         <Suspense>
           <Footer />
         </Suspense>
