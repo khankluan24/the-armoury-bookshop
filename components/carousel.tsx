@@ -50,11 +50,7 @@ export async function Carousel({
                     {product.title}
                   </Link>
                   <Link
-                    href={`/search?q=${
-                      ((product.author && product.author.value) || '')
-                        .toLowerCase()
-                        .replace(/\s+/g, '-') || ''
-                    }`}
+                    href={`/search?q=${(product.author && product.author.value) || ''}`}
                     className="text-xs font-normal underline-offset-4 hover:text-blue-600 hover:underline"
                   >
                     {(product.author && product.author.value) || ''}

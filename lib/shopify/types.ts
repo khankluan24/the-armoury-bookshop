@@ -76,7 +76,10 @@ export type Product = Omit<
   binding?: {
     value: string;
   };
-  isbn?: {
+  isbn_13?: {
+    value: string;
+  };
+  isbn_10?: {
     value: string;
   };
   author?: {

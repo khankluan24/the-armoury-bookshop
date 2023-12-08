@@ -34,7 +34,8 @@ export function ProductDescription({ product }: { product: Product }) {
           <p>Published: {product.published.value}</p>
         ) : null}
         {product.binding && product.binding.value ? <p>Binding: {product.binding.value}</p> : null}
-        {product.isbn && product.isbn.value ? <p>ISBN: {product.isbn.value}</p> : null}
+        {product.isbn_13 && product.isbn_13.value ? <p>ISBN-13: {product.isbn_13.value}</p> : null}
+        {product.isbn_10 && product.isbn_10.value ? <p>ISBN-10: {product.isbn_10.value}</p> : null}
         {product.author && product.author.value ? <p>Author: {product.author.value}</p> : null}
       </div>
 
